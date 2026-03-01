@@ -38,10 +38,22 @@
   </div>
 
   <div class="stats-row">
-    <div class="stat-card"><div class="stat-num">67<em>K+</em></div><div class="stat-label">Utenti</div></div>
-    <div class="stat-card"><div class="stat-num">10<em>K+</em></div><div class="stat-label">Attivi/giorno</div></div>
-    <div class="stat-card"><div class="stat-num">50<em>+</em></div><div class="stat-label">Canali</div></div>
-    <div class="stat-card"><div class="stat-num">24<em>/7</em></div><div class="stat-label">Supporto</div></div>
+    <div class="stat-card">
+      <div class="stat-num" id="stat-members">–</div>
+      <div class="stat-label">Utenti</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="stat-online">–</div>
+      <div class="stat-label">Attivi ora</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="stat-channels">–</div>
+      <div class="stat-label">Canali</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="stat-boosts">–</div>
+      <div class="stat-label">Boost</div>
+    </div>
   </div>
 </div>
 
@@ -158,5 +170,75 @@
 
 <script src="/js/main.js"></script>
 <script src="/js/components.js"></script>
+
+<script>
+// Formatta numero: 67432 → "67K+"
+function formatNum(n) {
+  if (n >= 1000000) return (n / 1000000).toFixed(1).replace('.0','') + 'M+';
+  if (n >= 1000)    return (n / 1000).toFixed(0) + 'K+';
+  return n + '+';
+}
+
+// Animazione contatore
+function animateCount(el, target, suffix) {
+  const duration = 1500;
+  const start = performance.now();
+  const from = 0;
+  function step(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    const current = Math.floor(from + (target - from) * ease);
+    el.innerHTML = formatNum(current).replace('+', '<em>+</em>').replace('K', '<em>K+</em>').replace('M', '<em>M+</em>');
+    if (progress < 1) requestAnimationFrame(step);
+    else el.innerHTML = suffix;
+  }
+  requestAnimationFrame(step);
+}
+
+async function loadStats() {
+  try {
+    const res = await fetch('/api/stats');
+    if (!res.ok) throw new Error('API error');
+    const data = await res.json();
+
+    const members  = document.getElementById('stat-members');
+    const online   = document.getElementById('stat-online');
+    const channels = document.getElementById('stat-channels');
+    const boosts   = document.getElementById('stat-boosts');
+
+    if (members)  animateCount(members,  data.members,  formatNum(data.members).replace('+','<em>+</em>'));
+    if (online)   animateCount(online,   data.online,   formatNum(data.online).replace('+','<em>+</em>'));
+    if (channels) animateCount(channels, data.channels, data.channels + '<em>+</em>');
+    if (boosts)   animateCount(boosts,   data.boosts,   data.boosts > 0 ? data.boosts + '<em>+</em>' : '0');
+
+    // Indicatore live
+    document.querySelectorAll('.stat-card').forEach(c => {
+      if (!c.querySelector('.live-dot') && !data.static) {
+        const dot = document.createElement('div');
+        dot.className = 'live-dot';
+        dot.style.cssText = 'width:6px;height:6px;border-radius:50%;background:#0dc464;display:inline-block;margin-left:6px;animation:pulse 2s infinite;vertical-align:middle;';
+        c.querySelector('.stat-label').appendChild(dot);
+      }
+    });
+
+  } catch (err) {
+    // Fallback valori statici
+    const fallbacks = [
+      { id: 'stat-members',  val: 67000 },
+      { id: 'stat-online',   val: 10000 },
+      { id: 'stat-channels', val: 50 },
+      { id: 'stat-boosts',   val: 0 }
+    ];
+    fallbacks.forEach(f => {
+      const el = document.getElementById(f.id);
+      if (el) el.innerHTML = f.id === 'stat-boosts' ? '0' : formatNum(f.val).replace('+','<em>+</em>');
+    });
+  }
+}
+
+document.addEventListener('DOMContentLoaded', loadStats);
+// Aggiorna ogni 5 minuti
+setInterval(loadStats, 5 * 60 * 1000);
+</script>
 </body>
 </html>
