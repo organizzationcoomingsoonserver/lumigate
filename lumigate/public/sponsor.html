@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sponsor – LUMIGATE</title>
+  <link rel="icon" href="/images/logo.png" type="image/png">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body data-page="sponsor">
+<div class="bg-orb o1"></div><div class="bg-orb o2"></div>
+<nav class="navbar" id="navbar"></nav>
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="/">Home</a> <span>›</span> <span>Sponsor</span></div>
+  <h1 class="section-title" style="font-size:2.8rem">🤝 Sponsor & Partner</h1>
+  <p style="color:var(--text-dim);max-width:500px;margin:0 auto">Collabora con LUMIGATE e raggiunge migliaia di utenti italiani.</p>
+</div>
+
+<section>
+  <div class="section-inner">
+    <div class="cards-grid" style="margin-bottom:48px">
+      <div class="feature-card" style="text-align:center">
+        <div class="f-icon">👁️</div>
+        <h3>67K+ Utenti</h3>
+        <p>Raggiungi oltre 67.000 utenti registrati, 10K+ attivi ogni giorno.</p>
+      </div>
+      <div class="feature-card" style="text-align:center">
+        <div class="f-icon">🎯</div>
+        <h3>Target Italiano</h3>
+        <p>Audience 100% italiana, prevalentemente 16-30 anni, appassionati di gaming.</p>
+      </div>
+      <div class="feature-card" style="text-align:center">
+        <div class="f-icon">📢</div>
+        <h3>Visibilità Massima</h3>
+        <p>Annunci in canali dedicati, menzioni nel server, link nel sito e bot.</p>
+      </div>
+    </div>
+
+    <div class="form-card" style="max-width:640px">
+      <div class="form-title">💼 Diventa Sponsor</div>
+      <p class="form-sub">Compila il modulo e ti contatteremo entro 24 ore.</p>
+
+      <div class="form-group">
+        <label>Nome / Azienda *</label>
+        <input type="text" id="name" placeholder="Il tuo nome o nome azienda" required>
+      </div>
+      <div class="form-group">
+        <label>Email di contatto *</label>
+        <input type="email" id="email" placeholder="email@esempio.com" required>
+      </div>
+      <div class="form-group">
+        <label>Discord (opzionale)</label>
+        <input type="text" id="discord" placeholder="username Discord">
+      </div>
+      <div class="form-group">
+        <label>Tipo di partnership *</label>
+        <select id="type" required>
+          <option value="">Seleziona...</option>
+          <option value="server">Server Discord Partnership</option>
+          <option value="prodotto">Sponsorizzazione Prodotto/Servizio</option>
+          <option value="giveaway">Giveaway / Evento</option>
+          <option value="altro">Altro</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Descrizione della proposta *</label>
+        <textarea id="proposal" rows="5" placeholder="Descrivi cosa vorresti proporre, budget approssimativo, durata della collaborazione..." required></textarea>
+      </div>
+      <button class="btn btn-primary btn-block btn-lg" onclick="submitSponsor()">
+        📨 Invia Proposta
+      </button>
+    </div>
+  </div>
+</section>
+
+<footer id="footer"></footer>
+<script src="/js/main.js"></script>
+<script src="/js/components.js"></script>
+<script>
+function submitSponsor() {
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const type = document.getElementById('type').value;
+  const proposal = document.getElementById('proposal').value.trim();
+  if (!name || !email || !type || !proposal) { showToast('Compila tutti i campi!', 'error'); return; }
+  showToast('Proposta inviata! Ti contatteremo presto 🎉', 'success');
+}
+</script>
+</body>
+</html>

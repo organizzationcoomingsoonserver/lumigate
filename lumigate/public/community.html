@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community – LUMIGATE</title>
+  <link rel="icon" href="/images/logo.png" type="image/png">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body data-page="community">
+<div class="bg-orb o1"></div><div class="bg-orb o2"></div>
+<nav class="navbar" id="navbar"></nav>
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="/">Home</a> <span>›</span> <span>Community</span></div>
+  <h1 class="section-title" style="font-size:2.8rem">👥 Community</h1>
+  <p style="color:var(--text-dim);max-width:480px;margin:0 auto">Scopri tutto sulla nostra community: regole, ruoli, staff e FAQ.</p>
+</div>
+
+<section id="ruoli">
+  <div class="section-inner">
+    <div class="section-label">Struttura</div>
+    <h2 class="section-title">🏷️ Ruoli del Server</h2>
+    <div class="cards-grid">
+      <div class="card"><div class="card-icon" style="background:rgba(255,60,60,.15)">👑</div><h3 style="color:#ff6b6b">Fondatore</h3><p>Il creatore e proprietario del server. Massima autorità.</p></div>
+      <div class="card"><div class="card-icon" style="background:rgba(255,140,60,.15)">🛡️</div><h3 style="color:#ff8c3c">Admin</h3><p>Gestisce il server, i bot e le decisioni importanti.</p></div>
+      <div class="card"><div class="card-icon" style="background:rgba(230,200,50,.15)">⚔️</div><h3 style="color:#e6c832">Moderatore</h3><p>Moddera i canali, gestisce i ticket e aiuta la community.</p></div>
+      <div class="card"><div class="card-icon" style="background:rgba(59,158,255,.15)">🌟</div><h3 style="color:var(--accent)">Helper</h3><p>Aiuta i nuovi membri e risponde alle domande.</p></div>
+      <div class="card"><div class="card-icon" style="background:rgba(180,60,255,.15)">💎</div><h3 style="color:#b43cff">VIP</h3><p>Membri che supportano attivamente il server.</p></div>
+      <div class="card"><div class="card-icon" style="background:rgba(13,196,100,.15)">✅</div><h3 style="color:var(--green)">Verificato</h3><p>Membro verificato con accesso a tutti i canali.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="regole">
+  <div class="section-inner">
+    <div class="section-label">Regolamento</div>
+    <h2 class="section-title">📜 Regole del Server</h2>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="card" style="display:flex;gap:18px;align-items:flex-start">
+        <div style="font-family:'Rajdhani',sans-serif;font-size:1.8rem;font-weight:700;color:var(--accent);flex-shrink:0;line-height:1">01</div>
+        <div><h3>Rispetta tutti i membri</h3><p>Nessuna forma di discriminazione, insulti, molestie o comportamenti tossici. Tratta gli altri come vorresti essere trattato.</p></div>
+      </div>
+      <div class="card" style="display:flex;gap:18px;align-items:flex-start">
+        <div style="font-family:'Rajdhani',sans-serif;font-size:1.8rem;font-weight:700;color:var(--accent);flex-shrink:0;line-height:1">02</div>
+        <div><h3>Niente spam o flood</h3><p>Evita di inviare messaggi ripetuti, flood di emoji o menzioni inutili. Rispetta i canali tematici.</p></div>
+      </div>
+      <div class="card" style="display:flex;gap:18px;align-items:flex-start">
+        <div style="font-family:'Rajdhani',sans-serif;font-size:1.8rem;font-weight:700;color:var(--accent);flex-shrink:0;line-height:1">03</div>
+        <div><h3>Niente contenuti NSFW</h3><p>Qualsiasi contenuto inappropriato, violento o esplicito è vietato e comporta un ban immediato.</p></div>
+      </div>
+      <div class="card" style="display:flex;gap:18px;align-items:flex-start">
+        <div style="font-family:'Rajdhani',sans-serif;font-size:1.8rem;font-weight:700;color:var(--accent);flex-shrink:0;line-height:1">04</div>
+        <div><h3>Niente pubblicità non autorizzata</h3><p>Vietato pubblicizzare altri server Discord o social senza permesso dello staff.</p></div>
+      </div>
+      <div class="card" style="display:flex;gap:18px;align-items:flex-start">
+        <div style="font-family:'Rajdhani',sans-serif;font-size:1.8rem;font-weight:700;color:var(--accent);flex-shrink:0;line-height:1">05</div>
+        <div><h3>Segui le istruzioni dello staff</h3><p>I moderatori hanno l'ultima parola. Se non sei d'accordo con una decisione, apri un ticket.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">❓ Domande Frequenti</h2>
+    <div style="display:flex;flex-direction:column;gap:10px" id="faq-list">
+      <div class="card faq-item" onclick="toggleFaq(this)" style="cursor:pointer">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <h3 style="margin:0">Come mi verifico nel server?</h3>
+          <span style="color:var(--text-muted);font-size:1.2rem;transition:.2s">+</span>
+        </div>
+        <div class="faq-answer" style="display:none;margin-top:12px;color:var(--text-dim);font-size:.85rem;line-height:1.7">
+          Vai nel canale #verifica e segui le istruzioni del bot. Dovrai accettare le regole e completare una breve procedura di verifica.
+        </div>
+      </div>
+      <div class="card faq-item" onclick="toggleFaq(this)" style="cursor:pointer">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <h3 style="margin:0">Come ottengo il ruolo VIP?</h3>
+          <span style="color:var(--text-muted);font-size:1.2rem;transition:.2s">+</span>
+        </div>
+        <div class="faq-answer" style="display:none;margin-top:12px;color:var(--text-dim);font-size:.85rem;line-height:1.7">
+          Il ruolo VIP si ottiene supportando il server tramite Nitro Boost o tramite acquisto nel nostro store. Contatta lo staff per maggiori info.
+        </div>
+      </div>
+      <div class="card faq-item" onclick="toggleFaq(this)" style="cursor:pointer">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <h3 style="margin:0">Come apro un ticket di supporto?</h3>
+          <span style="color:var(--text-muted);font-size:1.2rem;transition:.2s">+</span>
+        </div>
+        <div class="faq-answer" style="display:none;margin-top:12px;color:var(--text-dim);font-size:.85rem;line-height:1.7">
+          Vai nel canale #apri-ticket e clicca sul pulsante apposito. Un membro dello staff ti risponderà nel minor tempo possibile.
+        </div>
+      </div>
+      <div class="card faq-item" onclick="toggleFaq(this)" style="cursor:pointer">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <h3 style="margin:0">Come posso candidarmi allo staff?</h3>
+          <span style="color:var(--text-muted);font-size:1.2rem;transition:.2s">+</span>
+        </div>
+        <div class="faq-answer" style="display:none;margin-top:12px;color:var(--text-dim);font-size:.85rem;line-height:1.7">
+          Compila il modulo di candidatura nella sezione <a href="/richieste/candidature" style="color:var(--accent)">Richieste → Candidature</a>. Le candidature vengono valutate periodicamente.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="footer"></footer>
+<script src="/js/main.js"></script>
+<script src="/js/components.js"></script>
+<script>
+function toggleFaq(el) {
+  const answer = el.querySelector('.faq-answer');
+  const icon = el.querySelector('span');
+  const open = answer.style.display !== 'none';
+  answer.style.display = open ? 'none' : 'block';
+  icon.textContent = open ? '+' : '−';
+}
+</script>
+</body>
+</html>

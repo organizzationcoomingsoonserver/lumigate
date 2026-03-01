@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wiki – LUMIGATE</title>
+  <link rel="icon" href="/images/logo.png" type="image/png">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body data-page="wiki">
+<div class="bg-orb o1"></div>
+<div class="bg-orb o2"></div>
+<nav class="navbar" id="navbar"></nav>
+
+<!-- HEADER -->
+<div class="page-header">
+  <div class="breadcrumb"><a href="/">Home</a> <span>›</span> <span>Wiki</span></div>
+  <div class="section-label">Documentazione</div>
+  <h1 class="section-title" style="font-size:2.8rem">⚙️ LUMIGATE Wiki</h1>
+  <p style="color:var(--text-dim);max-width:480px;margin:0 auto">Esplora la documentazione completa di tutti i bot del server.</p>
+</div>
+
+<section>
+  <div class="section-inner">
+
+    <!-- BOT CARDS -->
+    <div class="cards-grid" style="margin-bottom:28px">
+      <div class="card" style="cursor:pointer" onclick="switchBotTab('economy')">
+        <div class="card-icon green">💚</div>
+        <h3>SolaEconomy</h3>
+        <p>Economia, gioco, valute, shop, premi, crafting, avventure</p>
+        <span style="font-size:.72rem;color:var(--green);font-weight:600;margin-top:10px;display:block">Apri →</span>
+      </div>
+      <div class="card" style="cursor:pointer" onclick="switchBotTab('guard')">
+        <div class="card-icon red">❤️</div>
+        <h3>SolaGuard</h3>
+        <p>Moderazione, anti-spam, warn, ban, mute, welcome, log</p>
+        <span style="font-size:.72rem;color:var(--red);font-weight:600;margin-top:10px;display:block">Apri →</span>
+      </div>
+      <div class="card" style="cursor:pointer" onclick="switchBotTab('bot')">
+        <div class="card-icon purple">💜</div>
+        <h3>SolaBot</h3>
+        <p>Utility, ticket, statistiche, configurazioni, log avanzati</p>
+        <span style="font-size:.72rem;color:var(--purple);font-weight:600;margin-top:10px;display:block">Apri →</span>
+      </div>
+    </div>
+
+    <!-- BOT TABS -->
+    <div class="bot-tabs" id="bot-tabs">
+      <button class="bot-tab green" data-bot="economy" onclick="switchBotTab('economy')">● SolaEconomy</button>
+      <button class="bot-tab red inactive" data-bot="guard" onclick="switchBotTab('guard')">● SolaGuard</button>
+      <button class="bot-tab purple inactive" data-bot="bot" onclick="switchBotTab('bot')">● SolaBot</button>
+    </div>
+
+    <!-- CMD PANEL -->
+    <div class="cmd-panel">
+      <div class="cmd-search">
+        <span style="color:var(--text-muted)">🔍</span>
+        <input type="text" id="cmd-search" placeholder="Cerca comando...">
+      </div>
+
+      <!-- ECONOMY -->
+      <div class="bot-panel" data-bot="economy">
+        <div class="cmd-cat">
+          <div class="cmd-cat-header">
+            <div class="left"><span class="dot" style="background:var(--green)"></span><span class="name">General</span><span class="count">5 comandi</span></div>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="cmd-cat-body">
+            <div class="cmd-item"><div><div class="cmd-name">/balance</div><div class="cmd-desc">Mostra il tuo saldo attuale</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/daily</div><div class="cmd-desc">Riscatta il premio giornaliero</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/pay</div><div class="cmd-desc">Trasferisci monete a un utente</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/leaderboard</div><div class="cmd-desc">Classifica dei più ricchi</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/setmoney</div><div class="cmd-desc">Imposta le monete di un utente</div></div><span class="cmd-badge admin">Admin</span></div>
+          </div>
+        </div>
+        <div class="cmd-cat">
+          <div class="cmd-cat-header">
+            <div class="left"><span class="dot" style="background:var(--green)"></span><span class="name">Adventure</span><span class="count">8 comandi</span></div>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="cmd-cat-body">
+            <div class="cmd-item"><div><div class="cmd-name">/adventure</div><div class="cmd-desc">Inizia un'avventura e guadagna ricompense</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/dungeon</div><div class="cmd-desc">Affronta un dungeon per bottino raro</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/boss</div><div class="cmd-desc">Sfida il boss della settimana</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/inventory</div><div class="cmd-desc">Visualizza il tuo inventario</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/equip</div><div class="cmd-desc">Equipaggia un oggetto dall'inventario</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/stats</div><div class="cmd-desc">Visualizza le tue statistiche da avventuriero</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/heal</div><div class="cmd-desc">Guarisci il tuo personaggio</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/respawn</div><div class="cmd-desc">Rispawna dopo una sconfitta</div></div><span class="cmd-badge admin">Admin</span></div>
+          </div>
+        </div>
+        <div class="cmd-cat">
+          <div class="cmd-cat-header">
+            <div class="left"><span class="dot" style="background:var(--green)"></span><span class="name">Fishing</span><span class="count">6 comandi</span></div>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="cmd-cat-body">
+            <div class="cmd-item"><div><div class="cmd-name">/fish</div><div class="cmd-desc">Vai a pescare e cattura pesci</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/fishlog</div><div class="cmd-desc">Visualizza il tuo diario di pesca</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/sellfish</div><div class="cmd-desc">Vendi i pesci catturati</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/fisherboard</div><div class="cmd-desc">Classifica dei migliori pescatori</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/bait</div><div class="cmd-desc">Acquista esche speciali</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/rod</div><div class="cmd-desc">Gestisci la tua canna da pesca</div></div><span class="cmd-badge user">Utente</span></div>
+          </div>
+        </div>
+        <div class="cmd-cat">
+          <div class="cmd-cat-header">
+            <div class="left"><span class="dot" style="background:var(--green)"></span><span class="name">Economy</span><span class="count">12 comandi</span></div>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="cmd-cat-body">
+            <div class="cmd-item"><div><div class="cmd-name">/shop</div><div class="cmd-desc">Apri il negozio del server</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/buy</div><div class="cmd-desc">Acquista un oggetto dal negozio</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/sell</div><div class="cmd-desc">Vendi un oggetto dal tuo inventario</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/craft</div><div class="cmd-desc">Crea oggetti combinando materiali</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/work</div><div class="cmd-desc">Lavora per guadagnare monete</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/crime</div><div class="cmd-desc">Commetti un crimine (rischio alto)</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/rob</div><div class="cmd-desc">Prova a derubare un utente</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/bank</div><div class="cmd-desc">Gestisci il tuo conto in banca</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/deposit</div><div class="cmd-desc">Deposita monete in banca</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/withdraw</div><div class="cmd-desc">Preleva monete dalla banca</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/additem</div><div class="cmd-desc">Aggiungi un oggetto al negozio</div></div><span class="cmd-badge admin">Admin</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/removeitem</div><div class="cmd-desc">Rimuovi un oggetto dal negozio</div></div><span class="cmd-badge admin">Admin</span></div>
+          </div>
+        </div>
+        <div class="cmd-cat">
+          <div class="cmd-cat-header">
+            <div class="left"><span class="dot" style="background:var(--green)"></span><span class="name">Social</span><span class="count">7 comandi</span></div>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="cmd-cat-body">
+            <div class="cmd-item"><div><div class="cmd-name">/profile</div><div class="cmd-desc">Mostra il tuo profilo completo</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/rep</div><div class="cmd-desc">Dai reputazione a un utente</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/marry</div><div class="cmd-desc">Sposati con un altro utente</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/divorce</div><div class="cmd-desc">Divorzia dal tuo partner</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/gift</div><div class="cmd-desc">Regala un oggetto a un utente</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/pet</div><div class="cmd-desc">Gestisci il tuo animale domestico</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/badges</div><div class="cmd-desc">Visualizza i tuoi badge ottenuti</div></div><span class="cmd-badge user">Utente</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GUARD -->
+      <div class="bot-panel" data-bot="guard" style="display:none">
+        <div class="cmd-cat">
+          <div class="cmd-cat-header">
+            <div class="left"><span class="dot" style="background:var(--red)"></span><span class="name">Moderazione</span><span class="count">10 comandi</span></div>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="cmd-cat-body">
+            <div class="cmd-item"><div><div class="cmd-name">/ban</div><div class="cmd-desc">Banna un utente dal server</div></div><span class="cmd-badge mod">Mod</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/unban</div><div class="cmd-desc">Sbanna un utente</div></div><span class="cmd-badge mod">Mod</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/kick</div><div class="cmd-desc">Caccia un utente dal server</div></div><span class="cmd-badge mod">Mod</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/mute</div><div class="cmd-desc">Silenzia un utente</div></div><span class="cmd-badge mod">Mod</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/unmute</div><div class="cmd-desc">Togli il muto a un utente</div></div><span class="cmd-badge mod">Mod</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/warn</div><div class="cmd-desc">Avverti un utente</div></div><span class="cmd-badge mod">Mod</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/warnings</div><div class="cmd-desc">Visualizza i warn di un utente</div></div><span class="cmd-badge mod">Mod</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/clearwarns</div><div class="cmd-desc">Elimina i warn di un utente</div></div><span class="cmd-badge admin">Admin</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/purge</div><div class="cmd-desc">Elimina messaggi in blocco</div></div><span class="cmd-badge mod">Mod</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/slowmode</div><div class="cmd-desc">Attiva lo slowmode in un canale</div></div><span class="cmd-badge mod">Mod</span></div>
+          </div>
+        </div>
+        <div class="cmd-cat">
+          <div class="cmd-cat-header">
+            <div class="left"><span class="dot" style="background:var(--red)"></span><span class="name">Anti-Spam</span><span class="count">5 comandi</span></div>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="cmd-cat-body">
+            <div class="cmd-item"><div><div class="cmd-name">/antispam</div><div class="cmd-desc">Configura l'anti-spam</div></div><span class="cmd-badge admin">Admin</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/antilink</div><div class="cmd-desc">Blocca i link non autorizzati</div></div><span class="cmd-badge admin">Admin</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/antiraid</div><div class="cmd-desc">Configura la protezione anti-raid</div></div><span class="cmd-badge admin">Admin</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/lockdown</div><div class="cmd-desc">Blocca tutti i canali del server</div></div><span class="cmd-badge admin">Admin</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/unlock</div><div class="cmd-desc">Sblocca i canali del server</div></div><span class="cmd-badge admin">Admin</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOLABOT -->
+      <div class="bot-panel" data-bot="bot" style="display:none">
+        <div class="cmd-cat">
+          <div class="cmd-cat-header">
+            <div class="left"><span class="dot" style="background:var(--purple)"></span><span class="name">Utility</span><span class="count">8 comandi</span></div>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="cmd-cat-body">
+            <div class="cmd-item"><div><div class="cmd-name">/help</div><div class="cmd-desc">Mostra tutti i comandi disponibili</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/ping</div><div class="cmd-desc">Controlla la latenza del bot</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/serverinfo</div><div class="cmd-desc">Informazioni sul server</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/userinfo</div><div class="cmd-desc">Informazioni su un utente</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/avatar</div><div class="cmd-desc">Mostra l'avatar di un utente</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/ticket</div><div class="cmd-desc">Apri un ticket di supporto</div></div><span class="cmd-badge user">Utente</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/setup</div><div class="cmd-desc">Configura il bot per il tuo server</div></div><span class="cmd-badge admin">Admin</span></div>
+            <div class="cmd-item"><div><div class="cmd-name">/logs</div><div class="cmd-desc">Configura i log del server</div></div><span class="cmd-badge admin">Admin</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end cmd-panel -->
+  </div>
+</section>
+
+<footer id="footer"></footer>
+
+<script src="/js/main.js"></script>
+<script src="/js/components.js"></script>
+<script>
+function switchBotTab(bot) {
+  document.querySelectorAll('.bot-tab').forEach(t => {
+    const isActive = t.dataset.bot === bot;
+    t.classList.toggle('inactive', !isActive);
+  });
+  document.querySelectorAll('.bot-panel').forEach(p => {
+    p.style.display = p.dataset.bot === bot ? '' : 'none';
+    if (p.dataset.bot === bot) initCmdCategories();
+  });
+  // open first cat
+  const panel = document.querySelector(`.bot-panel[data-bot="${bot}"]`);
+  const first = panel?.querySelector('.cmd-cat-header');
+  if (first) {
+    first.classList.add('open');
+    const b = first.nextElementSibling;
+    if (b) b.classList.add('open');
+  }
+}
+</script>
+</body>
+</html>

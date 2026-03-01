@@ -1,0 +1,32 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/*.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "public/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    { "src": "/auth/login", "dest": "/api/auth-login.js" },
+    { "src": "/auth/callback", "dest": "/api/auth-callback.js" },
+    { "src": "/auth/logout", "dest": "/api/auth-logout.js" },
+    { "src": "/auth/me", "dest": "/api/auth-me.js" },
+    { "src": "/api/submit-unban", "dest": "/api/submit-unban.js" },
+    { "src": "/api/submit-candidatura", "dest": "/api/submit-candidatura.js" },
+    { "src": "/wiki", "dest": "/public/wiki.html" },
+    { "src": "/community", "dest": "/public/community.html" },
+    { "src": "/richieste/unban", "dest": "/public/unban.html" },
+    { "src": "/richieste/candidature", "dest": "/public/candidature.html" },
+    { "src": "/dashboard", "dest": "/public/dashboard.html" },
+    { "src": "/sponsor", "dest": "/public/sponsor.html" },
+    { "src": "/supporto", "dest": "/public/supporto.html" },
+    { "src": "/css/(.*)", "dest": "/public/css/$1" },
+    { "src": "/js/(.*)", "dest": "/public/js/$1" },
+    { "src": "/images/(.*)", "dest": "/public/images/$1" },
+    { "src": "/", "dest": "/public/index.html" }
+  ]
+}

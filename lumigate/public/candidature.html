@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candidature Staff – LUMIGATE</title>
+  <link rel="icon" href="/images/logo.png" type="image/png">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body data-page="">
+<div class="bg-orb o1"></div><div class="bg-orb o2"></div>
+<nav class="navbar" id="navbar"></nav>
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="/">Home</a> <span>›</span> <span>Richieste</span> <span>›</span> <span>Candidature</span></div>
+  <h1 class="section-title" style="font-size:2.8rem">📋 Candidature Staff</h1>
+  <p style="color:var(--text-dim);max-width:500px;margin:0 auto">Vuoi far parte del nostro staff? Compila il modulo e ti contatteremo.</p>
+</div>
+
+<section>
+  <div class="section-inner">
+
+    <!-- Requisiti -->
+    <div class="cards-grid" style="max-width:600px;margin:0 auto 40px;grid-template-columns:1fr 1fr">
+      <div class="card" style="text-align:center">
+        <div style="font-size:2rem;margin-bottom:10px">📅</div>
+        <h3>Min. 30 giorni</h3>
+        <p>Nel server da almeno 30 giorni</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <div style="font-size:2rem;margin-bottom:10px">💬</div>
+        <h3>Attivo</h3>
+        <p>Presenza attiva e costante nei canali</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <div style="font-size:2rem;margin-bottom:10px">🔞</div>
+        <h3>18+ anni</h3>
+        <p>Devi avere almeno 18 anni</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <div style="font-size:2rem;margin-bottom:10px">🚫</div>
+        <h3>0 Sanzioni</h3>
+        <p>Nessun warn o ban recente</p>
+      </div>
+    </div>
+
+    <div class="form-card" id="cand-form">
+      <div class="form-title">📝 Modulo Candidatura</div>
+      <p class="form-sub">Rispondi in modo dettagliato. Candidature brevi verranno scartate.</p>
+
+      <div class="form-group">
+        <label>Username Discord *</label>
+        <input type="text" id="username" placeholder="Il tuo username Discord" required>
+      </div>
+      <div class="form-group">
+        <label>ID Discord *</label>
+        <input type="text" id="userid" placeholder="es. 123456789012345678" required>
+      </div>
+      <div class="form-group">
+        <label>Età *</label>
+        <input type="number" id="age" min="16" max="99" placeholder="La tua età" required>
+      </div>
+      <div class="form-group">
+        <label>Ruolo per cui ti candidi *</label>
+        <select id="role" required>
+          <option value="">Seleziona un ruolo...</option>
+          <option value="helper">Helper</option>
+          <option value="moderatore">Moderatore</option>
+          <option value="grafico">Grafico/Designer</option>
+          <option value="developer">Developer</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Da quanto tempo sei nel server? *</label>
+        <select id="servertime" required>
+          <option value="">Seleziona...</option>
+          <option value="1-3mesi">1-3 mesi</option>
+          <option value="3-6mesi">3-6 mesi</option>
+          <option value="6-12mesi">6-12 mesi</option>
+          <option value="1+anno">Più di 1 anno</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Hai esperienze come staff in altri server? *</label>
+        <textarea id="experience" rows="4" placeholder="Descrivi le tue esperienze precedenti come moderatore o staff. Se non ne hai, spiegaci perché vorresti iniziare." required></textarea>
+      </div>
+      <div class="form-group">
+        <label>Perché vuoi entrare nello staff di LUMIGATE? *</label>
+        <textarea id="motivation" rows="5" placeholder="Spiega la tua motivazione in almeno 3-4 frasi. Cosa ti spinge a candidarti? Cosa potresti portare alla community?" required></textarea>
+      </div>
+      <div class="form-group">
+        <label>Quante ore al giorno puoi dedicare al server? *</label>
+        <select id="hours" required>
+          <option value="">Seleziona...</option>
+          <option value="1-2">1-2 ore</option>
+          <option value="2-4">2-4 ore</option>
+          <option value="4-6">4-6 ore</option>
+          <option value="6+">Più di 6 ore</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Come gestiresti un conflitto tra utenti? *</label>
+        <textarea id="conflict" rows="4" placeholder="Descrivi come affronteresti una situazione di conflitto o di un utente che viola le regole." required></textarea>
+      </div>
+      <div class="form-group">
+        <label>Skill o competenze particolari (opzionale)</label>
+        <textarea id="skills" rows="3" placeholder="Hai competenze in grafica, programmazione, video editing? Elencale."></textarea>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+        <input type="checkbox" id="confirm" style="width:16px;height:16px;accent-color:var(--accent)">
+        <label for="confirm" style="font-size:.82rem;color:var(--text-dim);cursor:pointer">
+          Confermo che tutte le informazioni sono veritiere e mi impegno a rispettare le regole dello staff.
+        </label>
+      </div>
+
+      <button class="btn btn-primary btn-block btn-lg" onclick="submitCandidatura()">
+        🚀 Invia Candidatura
+      </button>
+    </div>
+
+    <div id="success-msg" style="display:none;max-width:600px;margin:0 auto;text-align:center">
+      <div style="font-size:4rem;margin-bottom:18px">🎉</div>
+      <h2 style="font-family:'Rajdhani',sans-serif;color:var(--white);font-size:2rem;margin-bottom:10px">Candidatura Inviata!</h2>
+      <p style="color:var(--text-dim);margin-bottom:24px">La tua candidatura è stata ricevuta. Lo staff la esaminerà e ti contatterà via DM Discord entro 1-2 settimane.</p>
+      <a href="/" class="btn btn-secondary">← Torna alla Home</a>
+    </div>
+
+  </div>
+</section>
+
+<footer id="footer"></footer>
+<script src="/js/main.js"></script>
+<script src="/js/components.js"></script>
+<script>
+async function submitCandidatura() {
+  const fields = ['username','userid','age','role','servertime','experience','motivation','hours','conflict'];
+  const data = {};
+  for (const f of fields) {
+    const el = document.getElementById(f);
+    const val = el ? el.value.trim() : '';
+    if (!val) { showToast('Compila tutti i campi obbligatori!', 'error'); return; }
+    data[f] = val;
+  }
+  data.skills = document.getElementById('skills').value.trim();
+  if (!document.getElementById('confirm').checked) { showToast('Devi confermare le informazioni!', 'error'); return; }
+  if (!/^\d{17,19}$/.test(data.userid)) { showToast('ID Discord non valido!', 'error'); return; }
+  if (parseInt(data.age) < 16) { showToast('Devi avere almeno 16 anni!', 'error'); return; }
+
+  const btn = document.querySelector('.btn-primary');
+  btn.textContent = '⏳ Invio in corso...'; btn.disabled = true;
+
+  try {
+    const res = await fetch('/api/submit-candidatura', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data)
+    });
+    if (res.ok) {
+      document.getElementById('cand-form').style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+    } else {
+      const d = await res.json();
+      showToast(d.error || 'Errore durante l\'invio', 'error');
+      btn.textContent = '🚀 Invia Candidatura'; btn.disabled = false;
+    }
+  } catch {
+    showToast('Errore di rete, riprova', 'error');
+    btn.textContent = '🚀 Invia Candidatura'; btn.disabled = false;
+  }
+}
+</script>
+</body>
+</html>

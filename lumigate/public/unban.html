@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Richiesta Unban – LUMIGATE</title>
+  <link rel="icon" href="/images/logo.png" type="image/png">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body data-page="">
+<div class="bg-orb o1"></div><div class="bg-orb o2"></div>
+<nav class="navbar" id="navbar"></nav>
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="/">Home</a> <span>›</span> <span>Richieste</span> <span>›</span> <span>Unban</span></div>
+  <h1 class="section-title" style="font-size:2.8rem">🔓 Richiesta Unban</h1>
+  <p style="color:var(--text-dim);max-width:480px;margin:0 auto">Sei stato bannato? Compila il modulo per richiedere un appello.</p>
+</div>
+
+<section>
+  <div class="section-inner">
+    <div id="auth-required" style="display:none">
+      <div class="alert warn" style="max-width:600px;margin:0 auto 24px">
+        <span class="alert-icon">⚠️</span>
+        <div>Devi essere loggato con Discord per inviare una richiesta. <a href="/auth/login" style="color:var(--accent)">Accedi ora →</a></div>
+      </div>
+    </div>
+
+    <div class="form-card" id="unban-form">
+      <div class="form-title">📋 Modulo Unban</div>
+      <p class="form-sub">Compila tutti i campi in modo onesto. Richieste incomplete verranno ignorate.</p>
+
+      <div class="alert info" style="margin-bottom:22px">
+        <span class="alert-icon">ℹ️</span>
+        <div>Lo staff risponderà entro 48-72 ore. Una sola richiesta per ban è consentita.</div>
+      </div>
+
+      <div class="form-group">
+        <label>Il tuo Username Discord *</label>
+        <input type="text" id="username" placeholder="es. lumigate#1234 o lumigate" required>
+      </div>
+      <div class="form-group">
+        <label>Il tuo ID Discord *</label>
+        <input type="text" id="userid" placeholder="es. 123456789012345678" required>
+        <small style="color:var(--text-muted);font-size:.72rem;margin-top:5px;display:block">
+          Per trovare il tuo ID: Impostazioni Discord → Avanzate → Modalità sviluppatore → Clic destro sul tuo nome → Copia ID
+        </small>
+      </div>
+      <div class="form-group">
+        <label>Data del ban approssimativa *</label>
+        <input type="date" id="bandate" required>
+      </div>
+      <div class="form-group">
+        <label>Motivo del ban (come riportato) *</label>
+        <input type="text" id="banreason" placeholder="es. Spam, insulti, ecc." required>
+      </div>
+      <div class="form-group">
+        <label>Perché dovremmo sbannare? *</label>
+        <textarea id="whyunban" rows="5" placeholder="Spiega in modo dettagliato perché meriti un secondo chance. Sii onesto riguardo a cosa è successo." required></textarea>
+      </div>
+      <div class="form-group">
+        <label>Come ti sei comportato male? *</label>
+        <textarea id="whatdid" rows="4" placeholder="Descrivi cosa hai fatto di sbagliato e perché non lo rifarai." required></textarea>
+      </div>
+      <div class="form-group">
+        <label>Note aggiuntive (opzionale)</label>
+        <textarea id="notes" rows="3" placeholder="Qualsiasi altra informazione rilevante..."></textarea>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+        <input type="checkbox" id="confirm" style="width:16px;height:16px;accent-color:var(--accent)">
+        <label for="confirm" style="font-size:.82rem;color:var(--text-dim);cursor:pointer">
+          Confermo che le informazioni fornite sono veritiere e accetto la decisione finale dello staff.
+        </label>
+      </div>
+
+      <button class="btn btn-primary btn-block btn-lg" onclick="submitUnban()">
+        🚀 Invia Richiesta
+      </button>
+    </div>
+
+    <div id="success-msg" style="display:none;max-width:600px;margin:0 auto;text-align:center">
+      <div style="font-size:4rem;margin-bottom:18px">✅</div>
+      <h2 style="font-family:'Rajdhani',sans-serif;color:var(--white);font-size:2rem;margin-bottom:10px">Richiesta Inviata!</h2>
+      <p style="color:var(--text-dim);margin-bottom:24px">La tua richiesta di unban è stata inoltrata allo staff. Riceverai una risposta entro 48-72 ore nel tuo DM Discord.</p>
+      <a href="/" class="btn btn-secondary">← Torna alla Home</a>
+    </div>
+  </div>
+</section>
+
+<footer id="footer"></footer>
+<script src="/js/main.js"></script>
+<script src="/js/components.js"></script>
+<script>
+async function submitUnban() {
+  const username = document.getElementById('username').value.trim();
+  const userid = document.getElementById('userid').value.trim();
+  const bandate = document.getElementById('bandate').value;
+  const banreason = document.getElementById('banreason').value.trim();
+  const whyunban = document.getElementById('whyunban').value.trim();
+  const whatdid = document.getElementById('whatdid').value.trim();
+  const notes = document.getElementById('notes').value.trim();
+  const confirm = document.getElementById('confirm').checked;
+
+  if (!username || !userid || !bandate || !banreason || !whyunban || !whatdid) {
+    showToast('Compila tutti i campi obbligatori!', 'error'); return;
+  }
+  if (!confirm) { showToast('Devi confermare le informazioni!', 'error'); return; }
+  if (!/^\d{17,19}$/.test(userid)) { showToast('ID Discord non valido!', 'error'); return; }
+
+  const btn = document.querySelector('.btn-primary');
+  btn.textContent = '⏳ Invio in corso...'; btn.disabled = true;
+
+  try {
+    const res = await fetch('/api/submit-unban', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, userid, bandate, banreason, whyunban, whatdid, notes })
+    });
+    if (res.ok) {
+      document.getElementById('unban-form').style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+    } else {
+      const d = await res.json();
+      showToast(d.error || 'Errore durante l\'invio', 'error');
+      btn.textContent = '🚀 Invia Richiesta'; btn.disabled = false;
+    }
+  } catch {
+    showToast('Errore di rete, riprova', 'error');
+    btn.textContent = '🚀 Invia Richiesta'; btn.disabled = false;
+  }
+}
+</script>
+</body>
+</html>
